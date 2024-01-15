@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RockResource" load_steps=4 format=3 uid="uid://cd7t2x5aqqvm"]
+
+[ext_resource type="PackedScene" uid="uid://cw5ixrvdrbkpb" path="res://scenes/environment/rocks/copper_rock.tscn" id="1_bp6cr"]
+[ext_resource type="Script" path="res://resources/gatherables/rock_resource.gd" id="1_wj7qf"]
+[ext_resource type="PackedScene" uid="uid://c2b16rxvsqh6b" path="res://scenes/environment/rocks/tapped_rock.tscn" id="2_ydlxn"]
+
+[resource]
+script = ExtResource("1_wj7qf")
+rock_type = 0
+required_level = 1
+xp_reward = 10
+required_tool = 2
+untapped_resource_scene = ExtResource("1_bp6cr")
+tapped_resource_scene = ExtResource("2_ydlxn")
+respawn_seconds = 6

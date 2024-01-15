@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TreeResource" load_steps=4 format=3 uid="uid://dssy6ebkgygic"]
+
+[ext_resource type="Script" path="res://resources/gatherables/tree_resource.gd" id="1_bflrb"]
+[ext_resource type="PackedScene" uid="uid://dpvmaguo4mtgt" path="res://scenes/environment/trees/tapped_tree.tscn" id="2_wpa85"]
+[ext_resource type="PackedScene" uid="uid://bpn87x1vvx5ft" path="res://scenes/environment/trees/oak_tree.tscn" id="3_a8u5k"]
+
+[resource]
+script = ExtResource("1_bflrb")
+tree_type = 1
+required_level = 2
+xp_reward = 15
+required_tool = 1
+untapped_resource_scene = ExtResource("3_a8u5k")
+tapped_resource_scene = ExtResource("2_wpa85")
+respawn_seconds = 10

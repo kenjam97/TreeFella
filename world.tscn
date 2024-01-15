@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://dfh0bwapvygk"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_m7acs"]
+[ext_resource type="PackedScene" uid="uid://d1s2vub42si8r" path="res://scenes/resource_node.tscn" id="2_0idrs"]
+[ext_resource type="PackedScene" uid="uid://c3g8n6aqkk0jq" path="res://scenes/characters/player/player.tscn" id="2_oun3m"]
+[ext_resource type="Resource" uid="uid://wcxc52uem8km" path="res://resources/gatherables/normal_tree.tres" id="3_2u3by"]
+[ext_resource type="Resource" uid="uid://ccxu6nab35ry4" path="res://resources/inventory/test_inv.tres" id="3_bgrpn"]
+[ext_resource type="Resource" uid="uid://cd7t2x5aqqvm" path="res://resources/gatherables/copper_rock.tres" id="4_r3qa6"]
+[ext_resource type="Texture2D" uid="uid://kjsx5m2x4bcs" path="res://assets/industrial_sunset_puresky_4k.hdr" id="5_ynhwq"]
+[ext_resource type="PackedScene" uid="uid://dsrtmtspntjw" path="res://scenes/inventory/inventory.tscn" id="6_eg82x"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_interface.gd" id="8_khjh8"]
+[ext_resource type="PackedScene" uid="uid://brb8wne07h3my" path="res://scenes/inventory/slot.tscn" id="10_d7yxv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1p1up"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyffq"]
+panorama = ExtResource("5_ynhwq")
+
+[sub_resource type="Sky" id="Sky_tt0sc"]
+sky_material = SubResource("PanoramaSkyMaterial_qyffq")
+
+[sub_resource type="Environment" id="Environment_icasa"]
+background_mode = 2
+sky = SubResource("Sky_tt0sc")
+ambient_light_source = 3
+reflected_light_source = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+
+[node name="Main" type="Node"]
+script = ExtResource("1_m7acs")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Player" parent="World" instance=ExtResource("2_oun3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.614)
+inventory_data = ExtResource("3_bgrpn")
+
+[node name="Environment" type="Node3D" parent="World"]
+
+[node name="Ground" type="MeshInstance3D" parent="World/Environment"]
+transform = Transform3D(15.8955, 0, 0, 0, 15.8955, 0, 0, 0, 15.8955, 0, 0, 0)
+mesh = SubResource("PlaneMesh_1p1up")
+skeleton = NodePath("../..")
+
+[node name="ResourceNode" parent="World/Environment" instance=ExtResource("2_0idrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73284, 0, -5.80303)
+
+[node name="ResourceNode2" parent="World/Environment" instance=ExtResource("2_0idrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21388, 0, 0)
+resource_data = ExtResource("3_2u3by")
+
+[node name="ResourceNode3" parent="World/Environment" instance=ExtResource("2_0idrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5266, 0, -8.9545)
+resource_data = ExtResource("4_r3qa6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_icasa")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/WorldEnvironment"]
+transform = Transform3D(0.080199, -0.996779, 5.16672e-08, -0.601265, -0.0483766, 0.797584, -0.795015, -0.0639654, -0.603208, 0, 4.87556, 0)
+shadow_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="World"]
+
+[node name="InventoryInterface" type="Control" parent="World/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_khjh8")
+
+[node name="PlayerInventory" parent="World/UI/InventoryInterface" instance=ExtResource("6_eg82x")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="GrabbedSlot" parent="World/UI/InventoryInterface" instance=ExtResource("10_d7yxv")]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0

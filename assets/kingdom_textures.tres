@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b1b5ma1mo0ssm"]
+
+[ext_resource type="Texture2D" uid="uid://dqtbe1bqron8i" path="res://assets/PolygonFantasyKingdom_Texture_01_B.png" id="1_a0edb"]
+
+[resource]
+albedo_texture = ExtResource("1_a0edb")

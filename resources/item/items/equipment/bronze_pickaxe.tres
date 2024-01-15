@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://nlmefddmgix8"]
+
+[ext_resource type="Script" path="res://resources/item/item_data.gd" id="1_jcrix"]
+[ext_resource type="Texture2D" uid="uid://dwncd7fwjys4m" path="res://assets/items/equipment/pick_bronze.png" id="2_7ehly"]
+
+[resource]
+script = ExtResource("1_jcrix")
+name = "Bronze Pickaxe"
+description = "A pickaxe made of bronze"
+stackable = false
+texture = ExtResource("2_7ehly")

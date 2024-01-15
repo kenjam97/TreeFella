@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1s2vub42si8r"]
+
+[ext_resource type="Script" path="res://scenes/resource_node.gd" id="1_qi11v"]
+[ext_resource type="Resource" uid="uid://dssy6ebkgygic" path="res://resources/gatherables/oak_tree.tres" id="2_3dw6b"]
+
+[node name="ResourceNode" type="Node3D"]
+script = ExtResource("1_qi11v")
+resource_data = ExtResource("2_3dw6b")
+
+[node name="Decal" type="Decal" parent="."]
+
+[node name="RespawnTimer" type="Timer" parent="."]

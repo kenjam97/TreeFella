@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TreeResource" load_steps=5 format=3 uid="uid://wcxc52uem8km"]
+
+[ext_resource type="Resource" uid="uid://bgjkkav3m7npm" path="res://resources/item/items/logs.tres" id="1_a3jat"]
+[ext_resource type="Script" path="res://resources/gatherables/tree_resource.gd" id="1_f8c7j"]
+[ext_resource type="PackedScene" uid="uid://dpvmaguo4mtgt" path="res://scenes/environment/trees/tapped_tree.tscn" id="2_hmmbi"]
+[ext_resource type="PackedScene" uid="uid://xedbulsmgesw" path="res://scenes/environment/trees/normal_tree.tscn" id="3_flbpo"]
+
+[resource]
+script = ExtResource("1_f8c7j")
+tree_type = 0
+required_level = 1
+xp_reward = 10
+required_tool = 1
+untapped_resource_scene = ExtResource("3_flbpo")
+tapped_resource_scene = ExtResource("2_hmmbi")
+respawn_seconds = 3
+drop_item = ExtResource("1_a3jat")
